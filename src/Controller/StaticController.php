@@ -9,9 +9,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class StaticController extends AbstractController
 {
     /**
-     * @Route("/static", name="static")
+     * @Route("/accueil", name="accueil")
      */
-    public function index(): Response
+    public function accueil(): Response
     {
         return $this->render('static/index.html.twig', [
             'controller_name' => 'StaticController',
