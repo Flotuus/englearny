@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Liste Mots{% endblock %}
+
+{% block contenu %}
+{{parent()}}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <h1 class="text-center text-secondary p-4">Liste des mots</h1>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-8 p-4 m-0 text-primary">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Libellé</th>
+                            <th> Categorie </th>
+                            <th></th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for mot in mots %}
+                            <tr class="{{ cycle(['table-primary', 'table-secondary'], loop.index0) }}">
+                                <td>{{mot.libelle |capitalize }}</td>
+                                <td>{{mot.categorie.libelle |capitalize }}</td>
+
+                                <td><a href="{{path('modifMot',{'id': mot.id})}}" class="text-white"><span class="material-icons" title="Modifier une categorie">create</span></a></td>
+                                <td><a href="{{path('suppMot',{'id': mot.id})}}" class="text-white"><span class="material-icons" title="Supprimer une categorie"> delete </span></a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

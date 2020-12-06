@@ -73,7 +73,7 @@ class ThemeController extends AbstractController
         $theme = $repoTheme->find($id);
             if($theme==null){
                 $this->addFlash('notice', "Ce thème n'existe pas");
-                return $this->redirectToRoute('liste_themes');
+                return $this->redirectToRoute('listeMots');
             }
             $form = $this->createForm(ModifThemeType::class,$theme);
                 if ($request->isMethod('POST')) {
