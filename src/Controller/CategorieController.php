@@ -59,7 +59,7 @@ class CategorieController extends AbstractController
         
         $categories = $repoCategorie->findBy(array(),array('libelle'=>'ASC'));
         return $this->render('categorie/listeCategorie.html.twig', [
-            'categories'=>$categories // Nous passons la liste des thèmes à la vue
+            'categories'=>$categories 
         ]);
 
     }
