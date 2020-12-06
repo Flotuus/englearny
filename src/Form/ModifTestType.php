@@ -20,7 +20,7 @@ class ModifTestType extends AbstractType
             ->add('libelle',TextType::class)
             ->add('niveau',IntegerType::class)
             ->add('theme',EntityType::class, array("class"=>"App\Entity\Theme","choice_label"=>"libelle"))
-            ->add('ajouter',SubmitType::class);
+            ->add('modifier',SubmitType::class);
         ;
     }
 
