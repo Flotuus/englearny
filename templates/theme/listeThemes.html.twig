@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{parent()}}Liste catégories{% endblock %}
+{% block title %}{{parent()}}Liste Theme{% endblock %}
 
 {% block contenu %}
 {{parent()}}
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <h1 class="text-center text-secondary p-4">Liste des catégories</h1>
+        <h1 class="text-center text-secondary p-4">Liste des thèmes</h1>
     </div>
     <div class="row justify-content-center">
         <div class="col-8 p-4 m-0 text-primary">
@@ -20,11 +20,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for categorie in categories %}
+                        {% for theme in themes %}
                             <tr class="{{ cycle(['table-primary', 'table-secondary'], loop.index0) }}">
-                                <td>{{categorie.libelle |capitalize }}</td>
-                                <td><a href="{{path('modifCategorie',{'id': categorie.id})}}" class="text-white"><span class="material-icons" title="Modifier une categorie">create</span></a></td>
-                                <td><a href="{{path('listeCategorie',{'supp':categorie.id})}}" class="text-white"><span class="material-icons" title="Supprimer une categorie"> delete </span></a></td>
+                                <td>{{theme.libelle |capitalize }}</td>
+                                <td><a href="{{path('modifTheme',{'id': theme.id})}}" class="text-white"><span class="material-icons" title="Modifier une Theme">create</span></a></td>
+                                <td><a href="{{path('listeThemes',{'supp': theme.id})}}" class="text-white"><span class="material-icons" title="Supprimer le thème"> delete </span></a></td>
                             </tr>
                         {% endfor %}
                     </tbody>

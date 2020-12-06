@@ -52,7 +52,7 @@ class CategorieController extends AbstractController
             $em->getManager()->remove($categorie);
             $em->getManager()->flush();
             }
-            $this->addFlash('notice', 'Thème supprimé');
+            $this->addFlash('notice', 'Catégorie supprimée');
             return $this->redirectToRoute('listeCategorie');
         }
            
