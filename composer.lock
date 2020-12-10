@@ -5,6 +5,7 @@
         "This file is @generated automatically"
     ],
     "content-hash": "b803abc73528a95c92be5d5d2e57a9cc",
+
     "packages": [
         {
             "name": "api-platform/core",
