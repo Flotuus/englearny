@@ -15,7 +15,7 @@ class ModifCategorieType extends AbstractType
     {
         $builder
             ->add('libelle',TextType::class)
-            ->add('ajouter',SubmitType::class);
+            ->add('modifier',SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
