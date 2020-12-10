@@ -8,6 +8,7 @@ use Faker\Factory;
 use App\Entity\Theme;
 use App\Entity\Categorie;
 use App\Entity\Test;
+use App\Entity\Mot;
 
 
 
@@ -32,11 +33,11 @@ class AppFixtures extends Fixture
     }
 
     public function loadThemes(){
-        $listeTheme = ["Animaux","Corps Humain","Vegetation","Legumes","Fruits","Automobile","Technologies","Meubles","Batiments" ];
+        $listeTheme = ["Animaux","Corps Humain","Vegetation","Legumes","Fruits","Automobile","Technologies","Meubles","Batiments","Agriculture"];
 
         for($i=0;$i<10;$i++){
             $theme = new Theme();
-            $theme->setLibelle($listeTheme[$i])
+            $theme->setLibelle($listeTheme[$i]);
      
             $this->addReference('theme'.$i, $theme);
             $this->manager->persist($theme);
@@ -62,12 +63,12 @@ class AppFixtures extends Fixture
     public function loadMots()
     {
         $listeMots = ["Table","Speak","Pretty","Slowly","He","The","When","On","Alas"];
-        for($j=0;$j<9;$j++){
+        for($l=0;$l<9;$l++){
             $mot = new Mot();
-            $mot->setLibelle($listeMots[$j]);
-            $mot->setCategorie(getReference('categorie'.$j);
+            $mot->setLibelle($listeMots[$l]);
+            $mot->setCategorie($this->getReference('categorie'.$l));
 
-            $this->addReference('mot'.$j, $mot);
+            $this->addReference('mot'.$l, $mot);
             $this->manager->persist($mot);
         }
 
