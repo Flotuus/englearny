@@ -24,8 +24,9 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $this->manager = $manager;
-        $repoUser = $this->manager->getRepository(Theme::class);
         $this->loadThemes();
+        $this->loadCategories();
+        $this->loadMots();
         $manager->flush();
     }
 
@@ -40,7 +41,34 @@ class AppFixtures extends Fixture
             $this->manager->persist($theme);
         }
     
-        $this->manager->flush();
+
+    }
+
+    public function loadCategories()
+    {
+        $listeCategorie = ["Nom","Verbe","Adjectif","Adverbe","Pronom","Determinant","Conjonction","Preposition","Interjection"];
+        for($j=0;$j<9;$j++){
+            $categorie = new Categorie();
+            $categorie->setLibelle($listeCategorie[$j]);
+
+            $this->addReference('categorie'.$j, $categorie);
+            $this->manager->persist($categorie);
+        }
+
+
+    }
+
+    public function loadMots()
+    {
+        $listeMots = ["Table","Speak","Pretty","Slowly","He","The","When","On","Alas"];
+        for($j=0;$j<9;$j++){
+            $mot = new Mot();
+            $mot->setLibelle($listeMots[$j]);
+            $mot->setCategorie(getReference('categorie'.$j);
+
+            $this->addReference('mot'.$j, $mot);
+            $this->manager->persist($mot);
+        }
 
     }
 
