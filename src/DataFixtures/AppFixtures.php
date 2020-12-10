@@ -26,6 +26,7 @@ class AppFixtures extends Fixture
         $this->manager = $manager;
         $this->loadThemes();
         $this->loadCategories();
+        $this->loadTest();
         $manager->flush();
     }
 
@@ -49,6 +50,18 @@ class AppFixtures extends Fixture
 
             $this->addReference('categorie'.$j, $categorie);
             $this->manager->persist($categorie);
+        }
+    }
+
+    public function loadTest()
+    {
+        for($k=0;$k<9;$k++){
+            $test = new Test();
+            $test->setLibelle('test'.$k);
+            $test->setNiveau($k);
+            $test->setTheme($this->getReference('theme'.$k));
+            $this->addReference('test'.$k, $test);
+            $this->manager->persist($test);
         }
     }
 
