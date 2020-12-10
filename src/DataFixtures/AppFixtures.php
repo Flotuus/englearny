@@ -14,7 +14,6 @@ use App\Entity\Test;
 class AppFixtures extends Fixture
 {
     private $manager;
-    private $repoTheme;
     private $faker;
 
     public function __construct(){
@@ -25,28 +24,32 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $this->manager = $manager;
-        $repoUser = $this->manager->getRepository(Theme::class);
         $this->loadThemes();
+        $this->loadCategories();
         $manager->flush();
     }
 
     public function loadThemes(){
+        $listeTheme = ["Animaux","Corps Humain","Vegetation","Legumes","Fruits","Automobile","Technologies","Meubles","Batiments","Agriculture"];
         for($i=0;$i<10;$i++){
             $theme = new Theme();
-            $theme->setLibelle($this->)
+            $theme->setLibelle($listeTheme[$i]);
      
-            $this->addReference('user'.$i, $user);
-            $this->manager->persist($user);
+            $this->addReference('theme'.$i, $theme);
+            $this->manager->persist($theme);
         }
-        $user = new User();
-        $user->setNom('LE GALES')
-        ->setPrenom('julien')
-        ->setEmail('julien.legales@gmail.com')
-        ->setPassword('julien')
-        ->setDateInscription(new \DateTime());
-        $this->addReference('julien', $user);
-        $this->manager->flush();
+    }
 
+    public function loadCategories()
+    {
+        $listeCategorie = ["Nom","Verbe","Adjectif","Adverbe","Pronom","Determinant","Conjonction","Preposition","Interjection"];
+        for($j=0;$j<9;$j++){
+            $categorie = new Categorie();
+            $categorie->setLibelle($listeCategorie[$j]);
+
+            $this->addReference('categorie'.$j, $categorie);
+            $this->manager->persist($categorie);
+        }
     }
 
 
