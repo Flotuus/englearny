@@ -9,17 +9,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-
-class AjoutEntrepriseType extends AbstractType
+class ModifEntrepriseType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-
-
             ->add('libelle',TextType::class)
-            ->add('ajouter',SubmitType::class)
-
+            ->add('modifier',SubmitType::class)
         ;
     }
 
