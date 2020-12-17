@@ -29,25 +29,11 @@ class Utilisateur
      */
     private $prenom;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $email;
-
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $password;
  /**
      * @ORM\OneToMany(targetEntity=RealiseTest::class, mappedBy="utilisateur")
      */
     private $realiseTests;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Role::class, inversedBy="utilisateurs")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $role;
 
     /**
      * @ORM\ManyToOne(targetEntity=Abonnement::class, inversedBy="utilisateurs")
@@ -58,6 +44,11 @@ class Utilisateur
      * @ORM\ManyToOne(targetEntity=Entreprise::class, inversedBy="utilisateurs")
      */
     private $entreprise;
+
+    /**
+     * @ORM\OneToOne(targetEntity=User::class, mappedBy="utilisateur", cascade={"persist", "remove"})
+     */
+    private $user;
 
     public function __construct()
     {
@@ -93,29 +84,7 @@ class Utilisateur
         return $this;
     }
 
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    public function getPassword(): ?string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
-
-        return $this;
-    }
+  
 /**
      * @return Collection|RealiseTest[]
      */
@@ -146,17 +115,7 @@ class Utilisateur
         return $this;
     }
 
-    public function getRole(): ?Role
-    {
-        return $this->role;
-    }
-
-    public function setRole(?Role $role): self
-    {
-        $this->role = $role;
-
-        return $this;
-    }
+ 
 
     public function getAbonnement(): ?Abonnement
     {
@@ -178,6 +137,23 @@ class Utilisateur
     public function setEntreprise(?Entreprise $entreprise): self
     {
         $this->entreprise = $entreprise;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): self
+    {
+        // set the owning side of the relation if necessary
+        if ($user->getUtilisateur() !== $this) {
+            $user->setUtilisateur($this);
+        }
+
+        $this->user = $user;
 
         return $this;
     }

@@ -45,6 +45,7 @@ class CategorieController extends AbstractController
     {
         $em = $this->getDoctrine();
         $repoCategorie = $em->getRepository(Categorie::class);
+        $getCategorie=$repoCategorie->getMots();
         
         if ($request->get('supp')!=null){
             $categorie = $repoCategorie->find($request->get('supp'));
@@ -55,9 +56,12 @@ class CategorieController extends AbstractController
             $this->addFlash('notice', 'Catégorie supprimée');
             return $this->redirectToRoute('listeCategorie');
         }
-           
+
+    
+
         
-        $categories = $repoCategorie->findBy(array(),array('libelle'=>'ASC'));
+        $categories = $repoCategorie->getMots();
+       
         return $this->render('categorie/listeCategorie.html.twig', [
             'categories'=>$categories 
         ]);

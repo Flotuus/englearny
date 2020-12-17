@@ -97,6 +97,19 @@
             </div>
         </li>
         </ul>
+        {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{path('inscrire')}}">S'inscrire</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{path('app_login')}}">Se connecter</a>
+          </li>
+      {% else %}   
+        <li class="nav-item">
+            <a class="nav-link" href="{{path('app_logout')}}">Se déconnecter</a>
+          </li>
+      {% endif %}    
+
         <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="text" placeholder="Search">
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
@@ -111,7 +124,8 @@
                 {% for message in app.flashes('notice') %}
                 <br/>
                 <div class="flash-notice alert alert-secondary text-center">
-                    {{ message }}
+                    message();
+                
                 </div>
                 {% endfor %}
             </div>
