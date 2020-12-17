@@ -9,6 +9,9 @@ use App\Entity\Theme;
 use App\Entity\Categorie;
 use App\Entity\Test;
 use App\Entity\Mot;
+use App\Entity\Entreprise;
+use App\Entity\Role;
+use App\Entity\Abonnement;
 
 
 
@@ -27,6 +30,9 @@ class AppFixtures extends Fixture
         $this->manager = $manager;
         $this->loadThemes();
         $this->loadCategories();
+        $this->loadEntreprises();
+        $this->loadRoles();
+        $this->loadAbonnements();
         $this->loadMots();
         $this->loadTest();
         $manager->flush();
@@ -49,11 +55,11 @@ class AppFixtures extends Fixture
     public function loadCategories()
     {
         $listeCategorie = ["Nom","Verbe","Adjectif","Adverbe","Pronom","Determinant","Conjonction","Preposition","Interjection"];
-        for($j=0;$j<9;$j++){
+        for($i=0;$i<9;$i++){
             $categorie = new Categorie();
-            $categorie->setLibelle($listeCategorie[$j]);
+            $categorie->setLibelle($listeCategorie[$i]);
 
-            $this->addReference('categorie'.$j, $categorie);
+            $this->addReference('categorie'.$i, $categorie);
             $this->manager->persist($categorie);
         }
 
@@ -63,12 +69,12 @@ class AppFixtures extends Fixture
     public function loadMots()
     {
         $listeMots = ["Table","Speak","Pretty","Slowly","He","The","When","On","Alas"];
-        for($l=0;$l<9;$l++){
+        for($i=0;$i<9;$i++){
             $mot = new Mot();
-            $mot->setLibelle($listeMots[$l]);
-            $mot->setCategorie($this->getReference('categorie'.$l));
+            $mot->setLibelle($listeMots[$i]);
+            $mot->setCategorie($this->getReference('categorie'.$i));
 
-            $this->addReference('mot'.$l, $mot);
+            $this->addReference('mot'.$i, $mot);
             $this->manager->persist($mot);
         }
 
@@ -76,16 +82,37 @@ class AppFixtures extends Fixture
 
     public function loadTest()
     {
-        for($k=0;$k<9;$k++){
+        for($i=0;$i<9;$i++){
             $test = new Test();
-            $test->setLibelle('test'.$k);
-            $test->setNiveau($k);
-            $test->setTheme($this->getReference('theme'.$k));
-            $this->addReference('test'.$k, $test);
+            $test->setLibelle('test'.$i);
+            $test->setNiveau($i);
+            $test->setTheme($this->getReference('theme'.$i));
+            $this->addReference('test'.$i, $test);
             $this->manager->persist($test);
         }
     }
 
-    
+    public function loadEntreprises()
+    {
+        for($i=0;$i<10;$i++){
+            $entreprise = new Entreprise();
+            $entreprise->setLibelle($this->faker->company);
+            $this->addReference('entreprise'.$i, $entreprise);
+            $this->manager->persist($entreprise);
+        }
+    }
+
+    public function loadRoles()
+    {
+
+
+
+        
+    }
+
+    public function loadAbonnements()
+    {
+
+    }
 
 }

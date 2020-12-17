@@ -19,7 +19,7 @@ class EntrepriseController extends AbstractController
     {
 
         $entreprise = new Entreprise();
-        $form = $this->createForm(ajoutEntrepriseType::class,$entreprise);
+        $form = $this->createForm(AjoutEntrepriseType::class,$entreprise);
 
         if($request->isMethod('POST')){
             $form->handleRequest($request);
