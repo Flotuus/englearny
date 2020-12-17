@@ -16,8 +16,7 @@ class AjoutAbonnementType extends AbstractType
     {
         $builder
             ->add('libelle', TextType::class)
-            ->add('paiementunefois', CheckBoxType::class ,[
-                'required' => false])
+            ->add('paiementunefois', CheckBoxType::class ,['required' => false])
             ->add('ajouter',SubmitType::class)
         ;
     }

@@ -15,8 +15,7 @@ use Symfony\Component\Form\ChoiceList\ChoiceList;
 
 
 
-
-class AjoutUtilisateurType extends AbstractType
+class ModifUtilisateurType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

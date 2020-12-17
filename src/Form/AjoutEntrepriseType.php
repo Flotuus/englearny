@@ -16,7 +16,6 @@ class AjoutEntrepriseType extends AbstractType
     {
         $builder
 
-
             ->add('libelle',TextType::class)
             ->add('ajouter',SubmitType::class)
 
