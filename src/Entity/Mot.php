@@ -37,6 +37,11 @@ class Mot
      */
     private $liste;
 
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $traduction;
+
     public function __construct()
     {
         $this->liste = new ArrayCollection();
@@ -91,6 +96,18 @@ class Mot
     public function removeListe(Liste $liste): self
     {
         $this->liste->removeElement($liste);
+
+        return $this;
+    }
+
+    public function getTraduction(): ?string
+    {
+        return $this->traduction;
+    }
+
+    public function setTraduction(string $traduction): self
+    {
+        $this->traduction = $traduction;
 
         return $this;
     }

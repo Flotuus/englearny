@@ -12,7 +12,7 @@ use App\Entity\Mot;
 use App\Entity\Entreprise;
 use App\Entity\Role;
 use App\Entity\Abonnement;
-
+use App\Entity\Liste;
 
 
 class AppFixtures extends Fixture
@@ -35,6 +35,7 @@ class AppFixtures extends Fixture
         $this->loadAbonnements();
         $this->loadMots();
         $this->loadTest();
+        $this->loadListe();
         $manager->flush();
     }
 
@@ -68,16 +69,67 @@ class AppFixtures extends Fixture
 
     public function loadMots()
     {
-        $listeMots = ["Table","Speak","Pretty","Slowly","He","The","When","On","Alas"];
-        for($i=0;$i<9;$i++){
-            $mot = new Mot();
-            $mot->setLibelle($listeMots[$i]);
-            $mot->setCategorie($this->getReference('categorie'.$i));
+        $listeMots1 =["Table","Speak","Pretty","Slowly","He","The","When","On","Alas"]; 
+        $listeMots2 = ["Chair","Write","Tall","Easily","I","That","And","About","Jeez"];
+        $listeMots3 = ["Desk","Share","Strong","Lately","We","This","Or","Until","Man"];
+        $listeMots4 = ["Phone","Make","Hard","Quickly","You","These","Nor","Within","Awesome"];
+        $listeMots5 = ["Computer","Pull","Fast","Recently","They","Those","Neither","Behind","Finnaly"];
+        $listeMotsTraduits1 = ["Table","Parler","Joli","Lentement","Il","Le","Quand","Sur","Helas"];
+        $listeMotsTraduits2 = ["Chaise","Ecrire","Grand","Facilement","Je","Cela","Et","Environ","Mon Dieu"];
+        $listeMotsTraduits3 = ["Bureau","Partager","Fort","Dernierement","Nous","Ceci","Ou","Jusqu\'a","Mec"];
+        $listeMotsTraduits4 = ["Telephone","Faire","Difficile","Rapidement","Tu","Ces","Ni","Parmi","Genial"];
+        $listeMotsTraduits5 = ["Ordinateur","Tirer","Rapide","Recemment","Ils","Ces","Aucun","Derriere","Enfin"];
+        
+            for($i=0,$j=0;$i<9;$i++,$j++){
+                $mot = new Mot();
+                $mot->setLibelle($listeMots1[$i]);
+                $mot->setTraduction($listeMotsTraduits1[$i]);
+                $mot->setCategorie($this->getReference('categorie'.$i));
 
-            $this->addReference('mot'.$i, $mot);
-            $this->manager->persist($mot);
-        }
+                $this->addReference('mot'.$j, $mot);
+                $this->manager->persist($mot);
+            }
 
+            for($i=0,$j;$i<9;$i++,$j++){
+                $mot = new Mot();
+                $mot->setLibelle($listeMots2[$i]);
+                $mot->setTraduction($listeMotsTraduits2[$i]);
+                $mot->setCategorie($this->getReference('categorie'.$i));
+
+                $this->addReference('mot'.$j, $mot);
+                $this->manager->persist($mot);
+            }
+
+            for($i=0,$j;$i<9;$i++,$j++){
+                $mot = new Mot();
+                $mot->setLibelle($listeMots3[$i]);
+                $mot->setTraduction($listeMotsTraduits3[$i]);
+                $mot->setCategorie($this->getReference('categorie'.$i));
+
+                $this->addReference('mot'.$j, $mot);
+                $this->manager->persist($mot);
+            }
+
+            for($i=0,$j;$i<9;$i++,$j++){
+                $mot = new Mot();
+                $mot->setLibelle($listeMots4[$i]);
+                $mot->setTraduction($listeMotsTraduits4[$i]);
+                $mot->setCategorie($this->getReference('categorie'.$i));
+
+                $this->addReference('mot'.$j, $mot);
+                $this->manager->persist($mot);
+            }
+
+            for($i=0,$j;$i<9;$i++,$j++){
+                $mot = new Mot();
+                $mot->setLibelle($listeMots5[$i]);
+                $mot->setTraduction($listeMotsTraduits5[$i]);
+                $mot->setCategorie($this->getReference('categorie'.$i));
+
+                $this->addReference('mot'.$j, $mot);
+                $this->manager->persist($mot);
+            }
+        
     }
 
     public function loadTest()
@@ -114,5 +166,32 @@ class AppFixtures extends Fixture
     {
 
     }
+
+    public function loadListe()
+    {
+        
+        $liste = new Liste();
+        $liste->setLibelle('listeMeuble1');
+        $liste->setEntreprise($this->getReference('entreprise0'));
+        $liste->setTheme($this->getReference('theme7'));
+        $this->addReference('liste0', $liste);
+        $liste->addMot($this->getReference('mot0'));
+        $liste->addMot($this->getReference('mot10'));
+        $liste->addMot($this->getReference('mot20'));
+
+        $this->manager->persist($liste);
+
+        
+        $liste = new Liste();
+        $liste->setLibelle('listeTechs1');
+        $liste->setEntreprise($this->getReference('entreprise1'));
+        $liste->setTheme($this->getReference('theme6'));
+        $this->addReference('liste1', $liste);
+        $liste->addMot($this->getReference('mot30'));
+        $liste->addMot($this->getReference('mot40'));
+        $this->manager->persist($liste);
+
+    }
+
 
 }

@@ -18,6 +18,7 @@ class AjoutMotType extends AbstractType
     {
         $builder
             ->add('libelle', TextType::class)
+            ->add('traduction', TextType::class)
             ->add('categorie', EntityType::class, array("class"=>"App\Entity\Categorie","choice_label"=>"libelle"))
             ->add('ajouter',SubmitType::class)
         ;
