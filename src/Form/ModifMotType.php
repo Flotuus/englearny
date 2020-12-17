@@ -16,7 +16,8 @@ class ModifMotType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('libelle')
+            ->add('libelle',TextType::class)
+            ->add('traduction',TextType::class)
             ->add('categorie', EntityType::class, array("class"=>"App\Entity\Categorie","choice_label"=>"libelle"))
             ->add('modifier', SubmitType::class) 
            
