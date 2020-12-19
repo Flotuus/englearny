@@ -4,9 +4,11 @@ namespace App\Entity;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use App\Repository\RealiseTestRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity(repositoryClass=RealiseTestRepository::class)
+ * @ApiResource()
  */
 
 /**

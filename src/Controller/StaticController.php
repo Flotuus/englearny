@@ -17,4 +17,14 @@ class StaticController extends AbstractController
             'controller_name' => 'StaticController',
         ]);
     }
+
+    /**
+     * @Route("/test", name="test")
+     */
+    public function test(): Response
+    {
+        return $this->render('static/test.html.twig', [
+            'controller_name' => 'StaticController',
+        ]);
+    }
 }
