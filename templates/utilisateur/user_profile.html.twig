@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Profil utilisateur{% endblock %}
+
+{% block contenu %}
+{{parent()}}
+<div class="container-fluid">   
+        <div class="row justify-content-center">
+            <h1 class="text-center text-primary p-4">Profil utilisateur</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-8 bg-white p-4 m-0 text-primary">
+             <div class="card mb-3">
+              <div class="row no-gutters">
+               <div class="col-md-4">
+                
+               <span class="material-icons text-white">
+                  cancel
+               </span>
+               </div>
+               <div class="col-md-8">
+                 <div class="card-body text-white">
+                   <h5 class="card-title">{{user.email | capitalize }} </h5>
+                   <p class="card-text">role : {{ user.roles.libelle}} </p>
+                   <p class="card-text">Date d'inscription </p>
+                  
+                 </div>
+              </div>
+           </div>
+        </div>
+      </div>
+   </div>
+</div>
+{% endblock %}        

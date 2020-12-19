@@ -10,6 +10,8 @@
 
                  {% if is_granted('IS_AUTHENTICATED_FULLY')%}
                     <h3>Bonjour {{app.user.email}}</h3>
+                    <h3>Bonjour {{app.user.id}}</h3>
+
                   {% endif %}
 
                   {% if is_granted('ROLE_ADMIN') %}

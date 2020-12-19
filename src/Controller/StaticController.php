@@ -9,6 +9,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
 use App\Form\InscriptionType;
+use App\Entity\Utilisateur;
 
 
 class StaticController extends AbstractController
@@ -18,6 +19,8 @@ class StaticController extends AbstractController
      */
     public function accueil(): Response
     {
+        
+
         return $this->render('static/index.html.twig', [
             'controller_name' => 'StaticController',
         ]);
@@ -39,11 +42,20 @@ class StaticController extends AbstractController
                 $mdp = $user->getPassword();
                 if($mdp == $mdpConf){
                     $role = $form->get('roles')->getData();
-                    $user->setRoles(array('ROLE_USER'));
                     $user->setPassword($passwordEncoder->encodePassword($user, $user->getPassword()));
                     $em = $this->getDoctrine()->getManager();
-                    $em->persist($user);
-                    $em->flush();
+                    $repoUser = $this->getDoctrine()->getRepository(User::class);
+                    $verif = $repoUser->findOneBy(array('email'=>$user->getEmail()));
+                    if ($verif != NULL){
+                        $this->addFlash('notice', 'email existant');
+                        return $this->redirectToRoute('inscrire');
+                    }else{
+                        $user->setRoles(array('ROLE_USER'));
+                        $em->persist($user);
+                        $em->flush();
+                    }
+
+                   
                     $this->addFlash('notice', 'Inscription réussie');
                     return $this->redirectToRoute('ajoutUtilisateur');
                 }
