@@ -22,6 +22,26 @@ class CategorieRepository extends ServiceEntityRepository
     // /**
     //  * @return Categorie[] Returns an array of Categorie objects
     //  */
+
+
+    public function getMots(): array
+    {
+        $em = $this->getEntityManager();
+
+        $query = $em->createQuery(
+
+            'SELECT c.libelle, COUNT(c.libelle) as nbMot, c.id
+            FROM App\Entity\Categorie c, App\Entity\Mot m
+            WHERE m.categorie = c.id
+            GROUP BY c.libelle
+          '
+        );
+
+        // returns an array of Product objects
+        return $query->getResult();
+    }
+
+
     /*
     public function findByExampleField($value)
     {

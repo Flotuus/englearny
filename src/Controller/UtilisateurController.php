@@ -25,6 +25,9 @@ class UtilisateurController extends AbstractController
             if ($form->isSubmitted() && $form->isValid()) {
                 $em = $this->getDoctrine()->getManager(); // On récupère le gestionnaire des entités
                  $em->persist($utilisateur); // Nous enregistrons notre nouveau thème
+                 $user=$utilisateur->getUser();
+                 $user->setUtilisateur($utilisateur);
+                 $em->persist($user);
                  $em->flush(); // Nous validons notre ajout
                  $this->addFlash('notice', 'Utilisateur inséré'); // Nous préparons le message à afficher à l’utilisateur sur la page où il se rendra
                  }

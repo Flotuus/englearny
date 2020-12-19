@@ -8,6 +8,17 @@
     <h1>Hello {{ controller_name }}! ✅</h1>
         <h1>Salut c'est Fabien et Maxence </h1>
 
+                 {% if is_granted('IS_AUTHENTICATED_FULLY')%}
+                    <h3>Bonjour {{app.user.email}}</h3>
+                  {% endif %}
+
+                  {% if is_granted('ROLE_ADMIN') %}
+                    <p>Vous êtes connecté en tant que {{ app.user.username }} (Admin)</p>
+                  {% else %}
+                    {% if is_granted('ROLE_USER') %}
+                      <p>Vous êtes connecté en tant que {{ app.user.username }} (Utilisateur)</p> 
+                    {% endif %}
+                  {% endif %}
 
     This friendly message is coming from:
     <ul>
