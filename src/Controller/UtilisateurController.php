@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Form\AjoutUtilisateurType;
 use App\Form\ModifUtilisateurType;
 use App\Entity\Utilisateur;
+use App\Entity\User;
 
 class UtilisateurController extends AbstractController
 {
@@ -104,6 +105,24 @@ class UtilisateurController extends AbstractController
         return $this->redirectToRoute('listeUtilisateurs');
           
     }
+
+    /**
+     * @Route("/userProfile/{id}", name="userProfile", requirements={"id"="\d+"})
+     */
+     public function userprofile(int $id, Request $request)
+     {
+        $em = $this->getDoctrine();
+       
+
+        $repoUser = $em->getRepository(User::class);
+        $user = $repoUser->find($id);
+       
+
+        return $this->render('utilisateur/user_profile.html.twig', [
+            'user' => $user
+
+        ]);
+    }    
 
 
 
