@@ -134,14 +134,28 @@ class AppFixtures extends Fixture
 
     public function loadTest()
     {
-        for($i=0;$i<9;$i++){
+        /* for($i=0;$i<9;$i++){
             $test = new Test();
             $test->setLibelle('test'.$i);
             $test->setNiveau($i);
             $test->setTheme($this->getReference('theme'.$i));
             $this->addReference('test'.$i, $test);
             $this->manager->persist($test);
-        }
+        } */
+        $test = new Test();
+        $test->setLibelle('testMeubles');
+        $test->setNiveau(1);
+        $test->setTheme($this->getReference('theme7'));
+        $this->addReference('test1', $test);
+        $this->manager->persist($test);
+        
+        $test = new Test();
+        $test->setLibelle('testTechnologies');
+        $test->setNiveau(1);
+        $test->setTheme($this->getReference('theme6'));
+        $this->addReference('test2', $test);
+        $this->manager->persist($test);
+
     }
 
     public function loadEntreprises()

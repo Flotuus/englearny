@@ -4,8 +4,24 @@
 
 {% block contenu %}
 {{parent()}}
-Hello
 
+<label id="labelTheme" for="selectTheme">Choisir un Theme pour passer votre Test</label>
+
+<select name="selectTheme" id="selectTheme">
+    <option value="0" selected>--Please choose an option--</option>
+   
+
+</select>
+
+<button name="btTheme" id="btTheme">Valider </button>
+
+<div id="question" name="question"></div>
+<input type="text" id="reponse" name="reponse"></input>
+
+{% endblock %}
+
+{% block script %}
+<script src="../js/test.js"></script>
 {% endblock %}
 
 

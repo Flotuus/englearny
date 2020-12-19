@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
+use App\Entity\Theme;
 use App\Form\InscriptionType;
 
 
@@ -28,8 +29,12 @@ class StaticController extends AbstractController
      */
     public function test(): Response
     {
+        $em = $this->getDoctrine();
+        $repoTheme = $em->getRepository(Theme::class);
+
+        $themes = $repoTheme->findBy(array(),array('libelle'=>'ASC'));
         return $this->render('static/test.html.twig', [
-            'controller_name' => 'StaticController',
+            'themes'=>$themes // Nous passons la liste des thèmes à la vue
         ]);
     }
     
