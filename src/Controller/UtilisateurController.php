@@ -39,7 +39,7 @@ class UtilisateurController extends AbstractController
         ]);
     }
 
-      /**
+    /**
     * @Route("/listeUtilisateurs", name="listeUtilisateurs")
     */
     public function listeUtilisateurs(Request $request)
