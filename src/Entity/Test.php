@@ -32,10 +32,10 @@ class Test
     private $niveau;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Theme::class, inversedBy="tests")
+     * @ORM\ManyToOne(targetEntity=Liste::class, inversedBy="tests")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $theme;
+    private $liste;
 
     public function __construct()
     {
@@ -70,15 +70,15 @@ class Test
 
         return $this;
     }
-
-    public function getTheme(): ?Theme
+    
+ public function getListe(): ?Liste
     {
-        return $this->theme;
+        return $this->liste;
     }
 
-    public function setTheme(?Theme $theme): self
+    public function setListe(?Liste $liste): self
     {
-        $this->theme = $theme;
+        $this->liste = $liste;
 
         return $this;
     }

@@ -34,8 +34,8 @@ class AppFixtures extends Fixture
         $this->loadRoles();
         $this->loadAbonnements();
         $this->loadMots();
-        $this->loadTest();
         $this->loadListe();
+        $this->loadTest(); 
         $manager->flush();
     }
 
@@ -145,14 +145,14 @@ class AppFixtures extends Fixture
         $test = new Test();
         $test->setLibelle('testMeubles');
         $test->setNiveau(1);
-        $test->setTheme($this->getReference('theme7'));
+        $test->setListe($this->getReference('liste0'));
         $this->addReference('test1', $test);
         $this->manager->persist($test);
         
         $test = new Test();
         $test->setLibelle('testTechnologies');
         $test->setNiveau(1);
-        $test->setTheme($this->getReference('theme6'));
+        $test->setListe($this->getReference('liste1'));
         $this->addReference('test2', $test);
         $this->manager->persist($test);
 
@@ -190,8 +190,8 @@ class AppFixtures extends Fixture
         $liste->setTheme($this->getReference('theme7'));
         $this->addReference('liste0', $liste);
         $liste->addMot($this->getReference('mot0'));
-        $liste->addMot($this->getReference('mot10'));
-        $liste->addMot($this->getReference('mot20'));
+        $liste->addMot($this->getReference('mot9'));
+        $liste->addMot($this->getReference('mot18'));
 
         $this->manager->persist($liste);
 
@@ -201,8 +201,8 @@ class AppFixtures extends Fixture
         $liste->setEntreprise($this->getReference('entreprise1'));
         $liste->setTheme($this->getReference('theme6'));
         $this->addReference('liste1', $liste);
-        $liste->addMot($this->getReference('mot30'));
-        $liste->addMot($this->getReference('mot40'));
+        $liste->addMot($this->getReference('mot27'));
+        $liste->addMot($this->getReference('mot36'));
         $this->manager->persist($liste);
 
     }

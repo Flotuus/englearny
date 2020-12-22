@@ -31,10 +31,6 @@ class Theme
      */
     private $listes;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Test::class, mappedBy="theme", orphanRemoval=false)
-     */
-    private $tests;
 
     public function __construct()
     {
@@ -83,36 +79,6 @@ class Theme
             // set the owning side to null (unless already changed)
             if ($liste->getTheme() === $this) {
                 $liste->setTheme(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Test[]
-     */
-    public function getTests(): Collection
-    {
-        return $this->tests;
-    }
-
-    public function addTest(Test $test): self
-    {
-        if (!$this->tests->contains($test)) {
-            $this->tests[] = $test;
-            $test->setTheme($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTest(Test $test): self
-    {
-        if ($this->tests->removeElement($test)) {
-            // set the owning side to null (unless already changed)
-            if ($test->getTheme() === $this) {
-                $test->setTheme(null);
             }
         }
 
