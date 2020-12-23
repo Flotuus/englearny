@@ -72,7 +72,7 @@ class StaticController extends AbstractController
 
                    
                     $this->addFlash('notice', 'Inscription réussie');
-                    return $this->redirectToRoute('ajoutUtilisateur');
+                    return $this->redirectToRoute('ajoutUtilisateur', array('id'=>$user->getId()));
                 }
                 
                 else{

@@ -14,12 +14,15 @@ use App\Entity\User;
 class UtilisateurController extends AbstractController
 {
      /**
-     * @Route("/ajoutUtilisateur", name="ajoutUtilisateur")
+     * @Route("/ajoutUtilisateur/{id}", name="ajoutUtilisateur", requirements={"id"="\d+"})
      */
-    public function ajoutUtilisateur(Request $request): Response
+    public function ajoutUtilisateur(int $id,Request $request): Response
     {
         $utilisateur = new Utilisateur();
         $form = $this->createForm(AjoutUtilisateurType::class, $utilisateur);
+        $repoUser = $this->getDoctrine()->getRepository(User::class);
+        $user = $repoUser->find($id);
+        $utilisateur->setUser($user);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
@@ -32,7 +35,7 @@ class UtilisateurController extends AbstractController
                  $em->flush(); // Nous validons notre ajout
                  $this->addFlash('notice', 'Utilisateur inséré'); // Nous préparons le message à afficher à l’utilisateur sur la page où il se rendra
                  }
-                 return $this->redirectToRoute('ajoutUtilisateur'); // Nous redirigeons l’utilisateur sur l’ajout d’un thème après l’insertion.
+                 return $this->redirectToRoute('accueil'); // Nous redirigeons l’utilisateur sur l’ajout d’un thème après l’insertion.
                  }
 
         return $this->render('utilisateur/ajoutUtilisateur.html.twig', [

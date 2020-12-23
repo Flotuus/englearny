@@ -56,9 +56,6 @@ class CategorieController extends AbstractController
             $this->addFlash('notice', 'Catégorie supprimée');
             return $this->redirectToRoute('listeCategorie');
         }
-
-    
-
         
         $categories = $repoCategorie->getMots();
        

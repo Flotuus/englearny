@@ -21,7 +21,11 @@
                <div class="col-md-8">
                  <div class="card-body text-white">
                    <h5 class="card-title">{{user.email | capitalize }} </h5>
-                   <p class="card-text">role : {{ user.roles.libelle}} </p>
+                   
+                   <p class="card-text">role :
+                   {% for r in user.roles %} 
+                   {{ r}}
+                   {% endfor %} </p>
                    <p class="card-text">Date d'inscription </p>
                   
                  </div>
