@@ -23,6 +23,9 @@
                     </thead>
                     <tbody>
                         {% for categorie in categories %}
+                            
+
+
                             <tr class="{{ cycle(['table-primary', 'table-secondary'], loop.index0) }}">
                                 <td>{{categorie.libelle |capitalize }}</td>
                                 <td>{{categorie.nbMot}}</td>

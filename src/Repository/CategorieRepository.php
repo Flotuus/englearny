@@ -30,7 +30,7 @@ class CategorieRepository extends ServiceEntityRepository
 
         $query = $em->createQuery(
 
-            'SELECT c.libelle, COUNT(c.libelle) as nbMot, c.id
+            'SELECT c.libelle, COUNT(c.libelle) as nbMot, c.id 
             FROM App\Entity\Categorie c, App\Entity\Mot m
             WHERE m.categorie = c.id
             GROUP BY c.libelle

@@ -14,8 +14,10 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
+                            <th scope="col">Email</th>
                             <th scope="col">Nom</th>
                             <th scope="col">Prenom</th>
+                            <th scope="col">Entreprise</th>
                             <th></th>
                             <th></th>
 
@@ -24,9 +26,10 @@
                     <tbody>
                         {% for utilisateur in utilisateurs %}
                             <tr class="{{ cycle(['table-primary', 'table-secondary'], loop.index0) }}">
+                                <td>{{utilisateur.user.email |capitalize }}</td>
                                 <td>{{utilisateur.nom |capitalize }}</td>
                                 <td>{{utilisateur.prenom |capitalize }}</td>
-
+                                <td>{{utilisateur.entreprise.libelle |capitalize }}</td>
                                 <td><a href="{{path('modifUtilisateur',{'id': utilisateur.id})}}" class="text-white"><span class="material-icons" title="Modifier un utilisateur">create</span></a></td>
                                 <td><a href="{{path('suppUtilisateur',{'id': utilisateur.id})}}" class="text-white"><span class="material-icons" title="Supprimer un utilisateur"> delete </span></a></td>
                             </tr>

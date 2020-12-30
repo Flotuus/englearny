@@ -47,6 +47,7 @@ class CategorieController extends AbstractController
         $repoCategorie = $em->getRepository(Categorie::class);
         $getCategorie=$repoCategorie->getMots();
         
+        
         if ($request->get('supp')!=null){
             $categorie = $repoCategorie->find($request->get('supp'));
             if($categorie!=null){
@@ -58,9 +59,11 @@ class CategorieController extends AbstractController
         }
         
         $categories = $repoCategorie->getMots();
-       
+        $categorieBases = $repoCategorie->findBy(array(),array('libelle'=>'ASC'));
+
         return $this->render('categorie/listeCategorie.html.twig', [
-            'categories'=>$categories 
+            'categories'=>$categories ,
+            'categorieBases'=>$categorieBases 
         ]);
 
     }
