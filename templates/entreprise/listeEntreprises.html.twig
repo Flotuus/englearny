@@ -17,12 +17,14 @@
                             <th scope="col">Libellé</th>
                             <th></th>
                             <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for entreprise in entreprises %}
                             <tr class="{{ cycle(['table-primary', 'table-secondary'], loop.index0) }}">
                                 <td>{{entreprise.libelle |capitalize }}</td>
+                                <td>{{entreprise.utilisateurs |capitalize }}</td>
                                 <td><a href="{{path('modifEntreprise',{'id': entreprise.id})}}" class="text-white"><span class="material-icons" title="Modifier une categorie">create</span></a></td>
                                 <td><a href="{{path('listeEntreprises',{'supp':entreprise.id})}}" class="text-white"><span class="material-icons" title="Supprimer une categorie"> delete </span></a></td>
                             </tr>
