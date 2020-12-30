@@ -73,7 +73,7 @@ class AppFixtures extends Fixture
         $listeMots2 = ["Chair","Write","Tall","Easily","I","That","And","About","Jeez"];
         $listeMots3 = ["Desk","Share","Strong","Lately","We","This","Or","Until","Man"];
         $listeMots4 = ["Phone","Make","Hard","Quickly","You","These","Nor","Within","Awesome"];
-        $listeMots5 = ["Computer","Pull","Fast","Recently","They","Those","Neither","Behind","Finnaly"];
+        $listeMots5 = ["Computer","Pull","Fast","Recently","They","Those","Neither","Behind","Finaly"];
         $listeMotsTraduits1 = ["Table","Parler","Joli","Lentement","Il","Le","Quand","Sur","Helas"];
         $listeMotsTraduits2 = ["Chaise","Ecrire","Grand","Facilement","Je","Cela","Et","Environ","Mon Dieu"];
         $listeMotsTraduits3 = ["Bureau","Partager","Fort","Dernierement","Nous","Ceci","Ou","Jusqu\'a","Mec"];

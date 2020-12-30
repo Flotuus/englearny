@@ -47,4 +47,22 @@ class EntrepriseRepository extends ServiceEntityRepository
         ;
     }
     */
+
+
+    public function getUtilisateurs(): array
+    {
+        $em = $this->getEntityManager();
+
+        $query = $em->createQuery(
+
+            'SELECT entreprise.libelle, entreprise.id, COUNT(utilisateur.id) as utilisateurs 
+            FROM App\Entity\Utilisateur utilisateur, App\Entity\Entreprise entreprise
+            WHERE utilisateur.entreprise = entreprise.id 
+            GROUP BY entreprise.libelle
+          '
+        );
+
+        // returns an array of Product objects
+        return $query->getResult();
+    }
 }
