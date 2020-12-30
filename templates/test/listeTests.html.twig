@@ -15,7 +15,7 @@
                     <thead>
                         <tr>
                             <th scope="col">Libellé</th>
-                            <th scope="col">Theme</th>
+                            <th scope="col">Liste</th>
                             <th scope="col">Niveau</th>
                             <th></th>
                             <th></th>
@@ -25,7 +25,7 @@
                         {% for test in tests %}
                             <tr class="{{ cycle(['table-primary', 'table-secondary'], loop.index0) }}">
                                 <td>{{test.libelle |capitalize }}</td>
-                                <td>{{test.theme.libelle |capitalize }}</td>
+                                <td>{{test.liste.libelle |capitalize }}</td>
                                 <td>{{test.niveau |capitalize }}</td>
                                 <td><a href="{{path('modifTest',{'id': test.id})}}" class="text-white"><span class="material-icons" title="Modifier un test">create</span></a></td>
                                 <td><a href="{{path('listeTests',{'supp':test.id})}}" class="text-white"><span class="material-icons" title="Supprimer un test"> delete </span></a></td>

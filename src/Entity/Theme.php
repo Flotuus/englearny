@@ -35,7 +35,6 @@ class Theme
     public function __construct()
     {
         $this->listes = new ArrayCollection();
-        $this->tests = new ArrayCollection();
     }
 
     public function getId(): ?int
