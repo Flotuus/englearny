@@ -46,7 +46,6 @@ class EntrepriseController extends AbstractController
     {
         $em = $this->getDoctrine();
         $repoEntreprise = $em->getRepository(Entreprise::class);
-        $getEntreprise = $repoEntreprise->getUtilisateurs();
 
         if ($request->get('supp')!=null){
             $entreprise = $repoEntreprise->find($request->get('supp'));
@@ -59,11 +58,11 @@ class EntrepriseController extends AbstractController
         }
            
         
-        $entreprises = $repoEntreprise->getUtilisateurs();
-
+        $entreprisesBDD = $repoEntreprise->getUtilisateurs();
+        $entreprises = $repoEntreprise->findBy(array(),array('libelle'=>'ASC'));
         return $this->render('entreprise/listeEntreprises.html.twig', [
-            'entreprises'=>$entreprises
-
+            'entreprises'=>$entreprises,
+            'entreprisesBDD'=>$entreprisesBDD
         ]);
 
     }

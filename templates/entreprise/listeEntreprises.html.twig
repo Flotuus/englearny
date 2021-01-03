@@ -21,7 +21,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for entreprise in entreprises %}
+                        {% for entreprise in entreprisesBDD %}
                             <tr class="{{ cycle(['table-primary', 'table-secondary'], loop.index0) }}">
                                 <td>{{entreprise.libelle |capitalize }}</td>
                                 <td>{{entreprise.utilisateurs |capitalize }}</td>
