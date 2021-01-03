@@ -1,33 +1,75 @@
-{% extends 'base.html.twig' %}
+    {% extends 'base.html.twig' %}
 
-{% block title %}Hello StaticController!{% endblock %}
+    {% block title %}Hello StaticController!{% endblock %}
 
-{% block contenu %}
-{{parent()}}
+    {% block contenu %}
+    {{parent()}}
 
-<label id="labelTheme" for="selectTheme">Choisir un Theme pour passer votre Test</label>
+    <br><br>
+    <div class="row justify-content-center">
+    
+    
 
-<select name="selectTheme" id="selectTheme">
-    <option value="0" selected>--Please choose an option--</option>
-   
+    <div class="form-group">
+        <label class="col-form-label col-form-label-lg" id="labelTheme" for="selectTheme">Choisir un Theme pour passer votre Test</label>
+        <select class="custom-select" name="selectTheme" id="selectTheme" >
+            <option value="0" selected>--Please choose an option--</option>
+            
+        </select>
+            <br><br>
 
-</select>
-
-<button name="btTheme" id="btTheme">Valider </button>
-
-<div id="question" name="question"></div>
-<input type="text" id="reponse" name="reponse"></input>
-<button name="btBegin" id="btBegin">Commencer </button>
-<button name="btTrad" id="btTrad">Suivant </button>
-<button name="btEnd" id="btEnd">Revenir sur la page des tests</button>
+        <div class="row justify-content-center">
+     
+        <button type="button"  class="btn btn-primary btn-lg" name="btTheme" id="btTheme">Valider </button>
+        </div>
+        </div>
 
 
 
-{% endblock %}
 
-{% block script %}
-<script src="../js/test.js"></script>
-{% endblock %}
+
+    <button type="button"  class="btn btn-primary btn-lg" name="btBegin" id="btBegin" >Commencer </button>
+
+
+
+
+    <div class="form-group">
+    <div class="card text-white bg-primary mb-3" style="max-width: 20rem;" id="card" >
+        <div class="card-header"> Anglais -> Français </div>
+        <div class="card-body" id="question" name="question"></div>
+
+        
+        <input type="text" id="reponse" name="reponse" class="form-control"></input>
+            <br>
+            <div class="row justify-content-center">
+     
+
+                <button type="button"  class="btn btn-primary btn-lg" name="btTrad" id="btTrad" > Suivant </button>
+
+            </div>
+            <br>
+       
+    </div>
+   <button type="button"  class="btn btn-primary btn-lg" name="btEnd" id="btEnd" > Revenir sur la page des tests </button>
+</div>
+    </div>
+
+        
+
+
+    </div>
+    
+
+
+
+ 
+
+
+    {% endblock %}
+
+    {% block script %}
+    <script src="../js/test.js"></script>
+    {% endblock %}
 
 
 

@@ -21,7 +21,7 @@ class InscriptionType extends AbstractType
         $builder
             ->add('email',EmailType::class)
             ->add('password',PasswordType::class)
-            ->add('roles',EntityType::class, array("class"=>Role::class,"choice_label"=>"libelle", "mapped"=>false, 'choice_value'=>"role"))
+            // ->add('roles',EntityType::class, array("class"=>Role::class,"choice_label"=>"libelle", "mapped"=>false, 'choice_value'=>"role"))
             ->add('confirmation', PasswordType::class,['mapped'=>false])
             ->add('inscrire',SubmitType::class)
         ;

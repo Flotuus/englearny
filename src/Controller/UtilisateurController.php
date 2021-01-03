@@ -51,6 +51,7 @@ class UtilisateurController extends AbstractController
         $em = $this->getDoctrine();
         $repoUtilisateur = $em->getRepository(Utilisateur::class);
         $utilisateurs = $repoUtilisateur->findBy(array(),array('nom'=>'ASC'));
+        
         return $this->render('utilisateur/listeUtilisateurs.html.twig', [
             'utilisateurs'=>$utilisateurs // Nous passons la liste des thèmes à la vue
         ]);

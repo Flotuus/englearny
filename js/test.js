@@ -8,6 +8,7 @@ $(document).ready(function() {
     let labelTheme = document.getElementById("labelTheme");
     let question = document.getElementById("question");
     let reponse = document.getElementById("reponse");
+    let card = document.getElementById("card");
     let mots = [];
     let motsTraduits = [];
     let reponseUtilisateur = [];
@@ -18,12 +19,13 @@ $(document).ready(function() {
     btTrad.style.display = "none";
     btEnd.style.display = "none";
     btBegin.style.display = "none";
+    card.style.display = "none";
 
     
 
     function ajaxTests(){
         var request= $.ajax({
-            url: "http://serveur1.arras-sio.com/symfony4-4060/englearny/public/api/tests?page=1", 
+            url: "http://serveur1.arras-sio.com/symfony4-4061/englearny/public/api/tests?page=1", 
             method:"GET",
             dataType: "json",
             beforeSend: function( xhr ) {
@@ -36,7 +38,7 @@ $(document).ready(function() {
         });
         // Fonction qui se lance lorsque l’accès au web service provoque une erreur
         request.fail(function( jqXHR, textStatus ) {
-            alert ('erreur');
+            alert ('erreur sur Tests');
         });
     }
 
@@ -55,7 +57,7 @@ $(document).ready(function() {
         });
         // Fonction qui se lance lorsque l’accès au web service provoque une erreur
         request.fail(function( jqXHR, textStatus ) {
-            alert ('erreur');
+            alert ('erreur sur motById');
         });
     }
 
@@ -75,13 +77,13 @@ $(document).ready(function() {
         });
         // Fonction qui se lance lorsque l’accès au web service provoque une erreur
         request.fail(function( jqXHR, textStatus ) {
-            alert ('erreur');
+            alert ('erreur sur listeById');
         });
     }
 
     function ajaxTestById(idTest){
         var request= $.ajax({
-            url: "http://serveur1.arras-sio.com/symfony4-4060/englearny/public/api/tests/"+idTest, 
+            url: "http://serveur1.arras-sio.com/symfony4-4061/englearny/public/api/tests/"+idTest, 
             method:"GET",
             dataType: "json",
             beforeSend: function( xhr ) {
@@ -92,7 +94,7 @@ $(document).ready(function() {
         });
         // Fonction qui se lance lorsque l’accès au web service provoque une erreur
         request.fail(function( jqXHR, textStatus ) {
-            alert ('erreur');
+            alert ('erreur sur testById');
         });
     }
 
@@ -120,6 +122,7 @@ $(document).ready(function() {
     btBegin.addEventListener("click", function () {
         question.innerHTML = "Traduire le mot suivant :" + mots[questionActuelle];
         questionActuelle += 1;
+        card.style.display = "block";
         question.style.display = "block";
         reponse.style.display = "block";
         btBegin.style.display = "none";

@@ -56,7 +56,7 @@ class StaticController extends AbstractController
                 $mdpConf = $form->get('confirmation')->getData();
                 $mdp = $user->getPassword();
                 if($mdp == $mdpConf){
-                    $role = $form->get('roles')->getData();
+                   // $role = $form->get('roles')->getData();
                     $user->setPassword($passwordEncoder->encodePassword($user, $user->getPassword()));
                     $em = $this->getDoctrine()->getManager();
                     $repoUser = $this->getDoctrine()->getRepository(User::class);
