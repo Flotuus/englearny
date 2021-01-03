@@ -1,34 +1,25 @@
-{% extends 'base.html.twig' %}
+  {% extends 'base.html.twig' %}
 
-{% block title %}Hello StaticController!{% endblock %}
+  {% block title %}Hello StaticController!{% endblock %}
 
-{% block contenu %}
+  {% block contenu %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-        <h1>Salut c'est Fabien et Maxence </h1>
+  <div class="example-wrapper">
+      <h1>Site réalisé par Fabien et Maxence </h1>
 
-                 {% if is_granted('IS_AUTHENTICATED_FULLY')%}
-                    <h3>Bonjour {{app.user.email}}</h3>
-                    <h3>Bonjour {{app.user.id}}</h3>
-                    {% if app.user.utilisateur.nom is defined %}
-                    <h3>Bonjour {{app.user.utilisateur.nom}}  {{app.user.utilisateur.prenom}}</h3>
+          {% if is_granted('IS_AUTHENTICATED_FULLY')%}
+                      {% if app.user.utilisateur.nom is defined %}
+                      <h3>Bonjour {{app.user.utilisateur.nom}}  {{app.user.utilisateur.prenom}}</h3>
+                      {% endif %}
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                      <p>Vous êtes connecté en tant que {{ app.user.username }} (Admin)</p>
+                    {% else %}
+                      {% if is_granted('ROLE_USER') %}
+                        <p>Vous êtes connecté en tant que {{ app.user.username }} (Utilisateur)</p> 
+                      {% endif %}
                     {% endif %}
 
-                  {% endif %}
-
-                  {% if is_granted('ROLE_ADMIN') %}
-                    <p>Vous êtes connecté en tant que {{ app.user.username }} (Admin)</p>
-                  {% else %}
-                    {% if is_granted('ROLE_USER') %}
-                      <p>Vous êtes connecté en tant que {{ app.user.username }} (Utilisateur)</p> 
-                    {% endif %}
-                  {% endif %}
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/symfony4-4060/public/englearny/src/Controller/StaticController.php'|file_link(0) }}">src/Controller/StaticController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/symfony4-4060/public/englearny/templates/static/index.html.twig'|file_link(0) }}">templates/static/index.html.twig</a></code></li>
-    </ul>
-</div>
-{% endblock %}
+    
+  </div>
+  {% endblock %}

@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Test;
-use App\Entity\Theme;
+use App\Entity\Liste;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,7 +19,7 @@ class AjoutTestType extends AbstractType
         $builder
             ->add('libelle',TextType::class)
             ->add('niveau',IntegerType::class)
-            ->add('theme',EntityType::class, array("class"=>"App\Entity\Theme","choice_label"=>"libelle"))
+            ->add('liste',EntityType::class, array("class"=>"App\Entity\Liste","choice_label"=>"libelle"))
             ->add('ajouter',SubmitType::class);
         ;
     }

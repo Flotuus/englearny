@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Utilisateur;
+use App\Entity\Role;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,12 +23,10 @@ class ModifUtilisateurType extends AbstractType
         $builder
             ->add('nom', TextType::class)
             ->add('prenom', TextType::class)
-            ->add('email', EmailType::class)
-            ->add('password', PasswordType::class)
-            ->add('role', EntityType::class, array("class"=>"App\Entity\Role","choice_label"=>"libelle"))
+            //->add('role', EntityType::class, array("class"=>"App\Entity\Role","choice_label"=>"libelle"))
             ->add('abonnement', EntityType::class, array("class"=>"App\Entity\Abonnement","choice_label"=>"libelle"))
             ->add('entreprise', EntityType::class, array("class"=>"App\Entity\Entreprise","choice_label"=>"libelle", 'placeholder' => 'Choose an option'))
-            ->add('ajouter',SubmitType::class)
+            ->add('modifier',SubmitType::class)
         ;
     }
 
