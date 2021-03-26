@@ -87,4 +87,40 @@ class StaticController extends AbstractController
         ]);
     }
 
+  
+     /**
+     * @Route("/modifRole/{id}", name="modifRole", requirements={"id"="\d+"})
+     */
+    public function modifRole(int $id, Request $request): Response
+    {
+       
+        $em = $this->getDoctrine();
+        $repoUser = $em->getRepository(User::class);
+        $user = $repoUser->find($id);
+        if($user==null){
+            $this->addFlash('notice', "Cet utilisateur n'existe pas");
+            return $this->redirectToRoute('listeUtilisateur');
+        }
+       
+        if ($request->isMethod('POST')) {
+            $this->addFlash('notice', 'Utilisateur modifié');
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $user->setRoles(array('ROLE_ADMIN'));
+                // get le tableau 
+                $em->persist($user);
+                $em->flush();
+                $this->addFlash('notice', 'Utilisateur modifié');
+            }   
+            return $this->redirectToRoute('userProfile');
+        }
+
+        return $this->render('utilisateur/user_profile.html.twig', [
+            'user' => $user
+
+        ]);
+    }
+
+
+
 }
