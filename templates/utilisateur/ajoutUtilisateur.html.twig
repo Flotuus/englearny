@@ -5,15 +5,46 @@
 {% block contenu %}
 {{parent()}}
 
+
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <h1 class="text-center text-secondary p-4">Ajouter un Utilisateur</h1>
+        <h1 class="text-center text-secondary p-4">Inscription ( Suite )</h1>
     </div>
-    <div class="row justify-content-center">
-        <div class="col-8 bg-secondary p-4 m-0 text-white">
-            {{form(form)}}
+  <div class="row justify-content-center">
+        <div class="col-8 bg-primary p-4 m-0 text-white">
+
+        
+        {{ form_start(form) }}
+
+        <div class="form-group">
+            {{ form_label(form.nom, 'Votre nom :', {'label_attr': {'class': 'font-weightbold'}}) }}
+            {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.prenom, 'Votre prénom', {'label_attr':{'class': 'font-weight-bold'}}) }}
+            {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.entreprise, 'Votre entreprise ', {'label_attr':{'class': 'font-weight-bold'}}) }}
+            {{ form_widget(form.entreprise, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+           <div class="form-group">
+            {{ form_label(form.abonnement, 'Type d\'abonnement', {'label_attr':{'class': 'font-weight-bold'}}) }}
+            {{ form_widget(form.abonnement, {'attr': {'class': 'form-control'}}) }}
+        </div>
+       
+        <div class="form-group mx-auto text-center">
+            {{ form_widget(form.ajouter, { 'label': "S'inscire", 'attr': {'class': 'btn font-weightbold bg-success text-white mx-auto text-center'}}) }}
+        </div>
+
+        {{ form_end(form) }}
+            
         </div>
     </div>
 </div>
+
 
 {% endblock %}

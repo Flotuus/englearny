@@ -104,16 +104,22 @@
                <a class="dropdown-item" href="{{path('listeListes')}}">Liste des Listes</a>
             </div>
         </li>
+
+
         </ul>
-         <li class="nav-item">
-            <a class="nav-link" href="{{path('test')}}">Faire un test</a>
-          </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{path('app_logout')}}">Se déconnecter</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{path('userProfile',{'id': app.user.id })}}">Mon profil </a>
-          </li>
+        <form class="form-inline my-2 my-lg-0">
+         
+            <a class="btn btn-secondary my-2 my-sm-0" href="{{path('test')}}">Faire un test</a>
+          
+        
+            <a class="btn btn-secondary my-2 my-sm-0" href="{{path('app_logout')}}">Se déconnecter</a>
+     
+          
+            <a class="btn btn-secondary my-2 my-sm-0" href="{{path('userProfile',{'id': app.user.id })}}">Mon profil </a>
+          
+     
+    </form>
+        
       {% endif %}    
 
         
