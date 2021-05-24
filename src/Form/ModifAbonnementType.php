@@ -17,7 +17,7 @@ class ModifAbonnementType extends AbstractType
         $builder
             ->add('libelle', TextType::class)
             ->add('paiementunefois', CheckBoxType::class ,['required' => false])
-            ->add('ajouter',SubmitType::class)
+            ->add('modifier',SubmitType::class)
         ;
     }
 
