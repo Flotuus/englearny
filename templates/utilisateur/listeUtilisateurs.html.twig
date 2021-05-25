@@ -27,7 +27,7 @@
                         {% for utilisateur in utilisateurs %}
                             <tr class="{{ cycle(['table-primary', 'table-secondary'], loop.index0) }}">
                                 <td>{{utilisateur.email |capitalize }}</td>
-                                {# <td>{{utilisateur.utilisateur.nom |capitalize }}</td>
+                                <td>{{utilisateur.utilisateur.nom |capitalize }}</td>
                                 <td>{{utilisateur.utilisateur.prenom |capitalize }}</td>
                                 <td>{{utilisateur.utilisateur.entreprise.libelle |capitalize }}</td> #}
                                 <td><a href="{{path('modifUtilisateur',{'id': utilisateur.id})}}" class="text-white"><span class="material-icons" title="Modifier un utilisateur">create</span></a></td>

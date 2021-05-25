@@ -13,7 +13,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="{{path('accueil')}}">Navbar</a>
+    <a class="navbar-brand" href="{{path('accueil')}}">Englearny</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -21,7 +21,7 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-            <a class="nav-link" href="{{path('accueil')}}">Home
+            <a class="nav-link" href="{{path('accueil')}}">Accueil
             <span class="sr-only">(current)</span>
             </a>
 
@@ -67,14 +67,6 @@
                <a class="dropdown-item" href="{{path('listeTests')}}">Liste des Tests </a>
             </div>
         </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Role</a>
-            <div class="dropdown-menu">
-            <a class="dropdown-item" href="{{path('ajoutRole')}}">Ajouter un Role</a>
-            <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="{{path('listeRoles')}}">Liste des Roles </a>
-            </div>
-        </li>
          <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Abonnement</a>
             <div class="dropdown-menu">
@@ -104,6 +96,7 @@
                <a class="dropdown-item" href="{{path('listeListes')}}">Liste des Listes</a>
             </div>
         </li>
+<<<<<<< HEAD
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Certification</a>
             <div class="dropdown-menu">
@@ -111,16 +104,24 @@
                <a class="dropdown-item" href="{{path('listeCertifications')}}">Liste des Certifications</a>
             </div>
         </li>
+=======
+
+
+>>>>>>> 306e088060f06201e31d337307e9a40fbcce9050
         </ul>
-         <li class="nav-item">
-            <a class="nav-link" href="{{path('test')}}">Faire un test</a>
-          </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{path('app_logout')}}">Se déconnecter</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{path('userProfile',{'id': app.user.id })}}">Mon profil </a>
-          </li>
+        <form class="form-inline my-2 my-lg-0">
+         
+            <a class="btn btn-secondary my-2 my-sm-0" href="{{path('test')}}">Faire un test</a>
+          
+        
+            <a class="btn btn-secondary my-2 my-sm-0" href="{{path('app_logout')}}">Se déconnecter</a>
+     
+          
+            <a class="btn btn-secondary my-2 my-sm-0" href="{{path('userProfile',{'id': app.user.id })}}">Mon profil </a>
+          
+     
+    </form>
+        
       {% endif %}    
 
         

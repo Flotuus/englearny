@@ -19,10 +19,10 @@ class ModifListeType extends AbstractType
     {
         $builder
         ->add('libelle',TextType::class)
-        ->add('mots',EntityType::class,array("class"=>"App\Entity\Mot","choice_label"=>"libelle"))
+        #->add('mots',EntityType::class,array("class"=>"App\Entity\Mot","choice_label"=>"libelle"))
         ->add('entreprise',EntityType::class,array("class"=>"App\Entity\Entreprise","choice_label"=>"libelle"))
         ->add('theme',EntityType::class, array("class"=>"App\Entity\Theme","choice_label"=>"libelle"))
-        ->add('ajouter',SubmitType::class)
+        ->add('modifier',SubmitType::class)
     ;
     }
 
