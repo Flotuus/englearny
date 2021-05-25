@@ -13,7 +13,7 @@ use App\Entity\Entreprise;
 use App\Entity\Role;
 use App\Entity\Abonnement;
 use App\Entity\Liste;
-
+use App\Entity\Certification;
 
 class AppFixtures extends Fixture
 {
@@ -35,6 +35,7 @@ class AppFixtures extends Fixture
         $this->loadAbonnements();
         $this->loadMots();
         $this->loadListe();
+        $this->loadCertification();
         $this->loadTest(); 
         $manager->flush();
     }
@@ -146,6 +147,7 @@ class AppFixtures extends Fixture
         $test->setLibelle('testMeubles');
         $test->setNiveau(1);
         $test->setListe($this->getReference('liste0'));
+        $test->setCertification($this->getReference('TOEIC'));
         $this->addReference('test1', $test);
         $this->manager->persist($test);
         
@@ -153,9 +155,17 @@ class AppFixtures extends Fixture
         $test->setLibelle('testTechnologies');
         $test->setNiveau(1);
         $test->setListe($this->getReference('liste1'));
+        $test->setCertification($this->getReference('TOEIC'));
         $this->addReference('test2', $test);
         $this->manager->persist($test);
-
+        
+        $test = new Test();
+        $test->setLibelle('testAnimaux');
+        $test->setNiveau(1);
+        $test->setListe($this->getReference('liste1'));
+        $test->setCertification($this->getReference('Cambridge'));
+        $this->addReference('test3', $test);
+        $this->manager->persist($test);
     }
 
     public function loadEntreprises()
@@ -205,6 +215,24 @@ class AppFixtures extends Fixture
         $liste->addMot($this->getReference('mot36'));
         $this->manager->persist($liste);
 
+    }
+
+    public function loadCertification(){
+        $certification = new Certification();
+        $certification->setLibelle('TOEIC');
+        $this->addReference('TOEIC', $certification);
+        $this->manager->persist($certification);
+
+        $certification = new Certification();
+        $certification->setLibelle('Cambridge');
+        $this->addReference('Cambridge', $certification);
+        $this->manager->persist($certification);
+
+        
+        $certification = new Certification();
+        $certification->setLibelle('TOEFL');
+        $this->addReference('TOEFL', $certification);
+        $this->manager->persist($certification);
     }
 
 

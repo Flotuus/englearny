@@ -37,6 +37,11 @@ class Test
      */
     private $liste;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Certification::class, inversedBy="tests")
+     */
+    private $certification;
+
     public function __construct()
     {
         $this->utilisateur = new ArrayCollection();
@@ -72,13 +77,25 @@ class Test
     }
     
  public function getListe(): ?Liste
-    {
-        return $this->liste;
-    }
+             {
+                 return $this->liste;
+             }
 
     public function setListe(?Liste $liste): self
     {
         $this->liste = $liste;
+
+        return $this;
+    }
+
+    public function getCertification(): ?Certification
+    {
+        return $this->certification;
+    }
+
+    public function setCertification(?Certification $certification): self
+    {
+        $this->certification = $certification;
 
         return $this;
     }
